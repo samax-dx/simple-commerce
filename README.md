@@ -56,11 +56,12 @@ setx SC_JWT_SECRET "lDO3/35D/5UidbfvG0oZlyQyMIdY0IA5FHjHvZwVGHM="
 
 ## Starting the Application
 
-You can start the application using the Maven wrapper. The command you should use depends on your shell:
-
-- Bash: `./mvnw spring-boot:run`
-- PowerShell: `.\mvnw spring-boot:run`
-- CMD: `mvnw spring-boot:run`
+- clone repo: `git clone https://github.com/samax-dx/simple-commerce.git`
+- cd into simple-commerce: `cd simple-commerce`.
+- start application:
+  - Bash: `./mvnw spring-boot:run`
+  - PowerShell: `.\mvnw spring-boot:run`
+  - CMD: `mvnw spring-boot:run`
 
 
 ## License
