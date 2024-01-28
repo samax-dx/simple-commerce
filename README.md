@@ -63,6 +63,14 @@ setx SC_JWT_SECRET "lDO3/35D/5UidbfvG0oZlyQyMIdY0IA5FHjHvZwVGHM="
   - CMD: `mvnw spring-boot:run`
 
 
+## Features
+- Secure user registration and login system ✔️
+- Product listing with descriptions and images ⏳
+- Shopping cart functionality with add, remove, and update features ❌
+- Order processing system with confirmation and tracking ❌
+- User account management for viewing order history and tracking orders ❌
+
+
 ## License
 
 This project is licensed under the terms of the MIT license.
