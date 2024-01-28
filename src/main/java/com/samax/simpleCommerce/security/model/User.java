@@ -1,7 +1,7 @@
-package com.samax.simpleCommerce.model;
+package com.samax.simpleCommerce.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.samax.simpleCommerce.util.RoleSetConverter;
+import com.samax.simpleCommerce.security.util.RoleSetConverter;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

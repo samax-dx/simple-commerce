@@ -1,6 +1,6 @@
-package com.samax.simpleCommerce.repository;
+package com.samax.simpleCommerce.security.repository;
 
-import com.samax.simpleCommerce.model.User;
+import com.samax.simpleCommerce.security.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

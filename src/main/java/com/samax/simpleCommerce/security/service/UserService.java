@@ -1,12 +1,12 @@
-package com.samax.simpleCommerce.service;
+package com.samax.simpleCommerce.security.service;
 
-import com.samax.simpleCommerce.excption.ScClientException;
-import com.samax.simpleCommerce.model.LoginDto;
-import com.samax.simpleCommerce.model.RegisterDto;
-import com.samax.simpleCommerce.model.RoleName;
-import com.samax.simpleCommerce.model.User;
-import com.samax.simpleCommerce.repository.UserRepository;
-import com.samax.simpleCommerce.util.JwtUtil;
+import com.samax.simpleCommerce.common.excption.ScClientException;
+import com.samax.simpleCommerce.security.repository.UserRepository;
+import com.samax.simpleCommerce.security.model.LoginDto;
+import com.samax.simpleCommerce.security.model.RegisterDto;
+import com.samax.simpleCommerce.security.model.RoleName;
+import com.samax.simpleCommerce.security.model.User;
+import com.samax.simpleCommerce.security.util.JwtUtil;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

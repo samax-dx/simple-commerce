@@ -1,11 +1,9 @@
-package com.samax.simpleCommerce.excption;
+package com.samax.simpleCommerce.common.excption;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import java.util.Objects;
 
 
 @ControllerAdvice

@@ -1,7 +1,7 @@
-package com.samax.simpleCommerce.util;
+package com.samax.simpleCommerce.security.util;
 
 
-import com.samax.simpleCommerce.model.User;
+import com.samax.simpleCommerce.security.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

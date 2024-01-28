@@ -1,7 +1,7 @@
-package com.samax.simpleCommerce.service;
+package com.samax.simpleCommerce.security.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.samax.simpleCommerce.util.JwtUtil;
+import com.samax.simpleCommerce.security.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

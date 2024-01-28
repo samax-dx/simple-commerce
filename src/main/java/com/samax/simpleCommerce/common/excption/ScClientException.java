@@ -1,4 +1,4 @@
-package com.samax.simpleCommerce.excption;
+package com.samax.simpleCommerce.common.excption;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

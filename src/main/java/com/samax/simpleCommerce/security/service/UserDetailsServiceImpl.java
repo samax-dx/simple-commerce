@@ -1,6 +1,6 @@
-package com.samax.simpleCommerce.service;
+package com.samax.simpleCommerce.security.service;
 
-import com.samax.simpleCommerce.repository.UserRepository;
+import com.samax.simpleCommerce.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

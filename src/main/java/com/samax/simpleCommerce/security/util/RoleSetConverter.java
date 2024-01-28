@@ -1,6 +1,6 @@
-package com.samax.simpleCommerce.util;
+package com.samax.simpleCommerce.security.util;
 
-import com.samax.simpleCommerce.model.RoleName;
+import com.samax.simpleCommerce.security.model.RoleName;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

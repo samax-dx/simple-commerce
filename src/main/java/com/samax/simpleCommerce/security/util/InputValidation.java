@@ -1,4 +1,4 @@
-package com.samax.simpleCommerce.util;
+package com.samax.simpleCommerce.security.util;
 
 public class InputValidation {
 

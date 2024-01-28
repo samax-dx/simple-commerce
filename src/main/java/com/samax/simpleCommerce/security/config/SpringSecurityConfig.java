@@ -1,7 +1,7 @@
-package com.samax.simpleCommerce.config;
+package com.samax.simpleCommerce.security.config;
 
-import com.samax.simpleCommerce.service.JwtAuthFilter;
-import com.samax.simpleCommerce.service.UserDetailsServiceImpl;
+import com.samax.simpleCommerce.security.service.JwtAuthFilter;
+import com.samax.simpleCommerce.security.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

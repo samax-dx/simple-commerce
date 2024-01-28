@@ -1,8 +1,8 @@
-package com.samax.simpleCommerce.controller;
+package com.samax.simpleCommerce.security.controller;
 
-import com.samax.simpleCommerce.model.LoginDto;
-import com.samax.simpleCommerce.model.RegisterDto;
-import com.samax.simpleCommerce.service.UserService;
+import com.samax.simpleCommerce.security.model.LoginDto;
+import com.samax.simpleCommerce.security.model.RegisterDto;
+import com.samax.simpleCommerce.security.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
