@@ -1,9 +1,7 @@
 package com.samax.simpleCommerce.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.samax.simpleCommerce.security.util.InputValidation;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
