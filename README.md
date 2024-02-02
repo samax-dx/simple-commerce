@@ -70,6 +70,12 @@ setx SC_JWT_SECRET "lDO3/35D/5UidbfvG0oZlyQyMIdY0IA5FHjHvZwVGHM="
 - Order processing system with confirmation and tracking ❌
 - User account management for viewing order history and tracking orders ❌
 
+## Additional Features [✔️: Done, ⏳: In-progress, ❌: Not implemented]
+- Product Search and Filtering ❌
+- Customer Product Ratings and Reviews ❌
+- Secure Payment Gateway Integration ❌
+- Admin panel for managing products, orders, and user accounts ❌
+
 
 ## License
 
