@@ -4,7 +4,7 @@
 ## Requirements
 
 - Java 17 JDK
-- MySQL 8+ or MariaDB Server available on `localhost:3306`
+- MySQL 8.* compatible server available on `localhost:3306`
   - Database should be created with `CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci`
 
 
