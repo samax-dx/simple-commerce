@@ -1,6 +1,7 @@
 package com.samax.simpleCommerce.security.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.samax.simpleCommerce.common.excption.ScHttpException;
 import com.samax.simpleCommerce.security.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,7 +20,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +33,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain filterChain) throws ServletException, IOException {
         Map<String, Object> errorDetails = new HashMap<>();
 
         try {
@@ -43,12 +45,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             }
 
             Claims claims = jwtUtil.resolveClaims(request);
-            if (claims == null || !jwtUtil.validateClaims(claims)) {
-                throw new Exception();
+            if (claims == null) {
+                throw new ScHttpException(HttpStatus.UNAUTHORIZED, "invalid token");
             }
 
-            Authentication authentication = new UsernamePasswordAuthenticationToken(claims.getSubject(), null,
-                    Arrays.stream(((String) claims.get("roles")).split(",")).map(SimpleGrantedAuthority::new).toList());
+            Authentication authentication = new UsernamePasswordAuthenticationToken(jwtUtil.getSubject(claims), null,
+                   jwtUtil.getRoles(claims).stream().map(SimpleGrantedAuthority::new).toList());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (Exception e) {

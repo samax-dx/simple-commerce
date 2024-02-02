@@ -43,7 +43,7 @@ public class SpringSecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sessionCustomizer -> sessionCustomizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(requestCustomizer -> requestCustomizer
-                        .requestMatchers("/health/**", "/user/**").permitAll()
+                        .requestMatchers("/health/**", "/user/**", "/product/**", "/file/**").permitAll()
                         .requestMatchers("/admin/**").hasAuthority("ADMIN"))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

@@ -1,6 +1,6 @@
 package com.samax.simpleCommerce.security.service;
 
-import com.samax.simpleCommerce.common.excption.ScClientException;
+import com.samax.simpleCommerce.common.excption.ScHttpException;
 import com.samax.simpleCommerce.security.repository.UserRepository;
 import com.samax.simpleCommerce.security.model.LoginDto;
 import com.samax.simpleCommerce.security.model.RegisterDto;
@@ -41,7 +41,7 @@ public class UserService {
 
     public String register(RegisterDto registerDto, String signupKey) {
         if (userRepository.existsByEmail(registerDto.getEmail())) {
-            throw new ScClientException(HttpStatus.BAD_REQUEST, MSG_USER_EXISTS);
+            throw new ScHttpException(HttpStatus.BAD_REQUEST, MSG_USER_EXISTS);
         }
 
         User user = new User();
@@ -57,14 +57,14 @@ public class UserService {
 
     public String authenticate(LoginDto loginDto) {
         User user = userRepository.findByEmail(loginDto.getEmail())
-                .orElseThrow(() -> new ScClientException(HttpStatus.NOT_FOUND, MSG_USER_NOT_FOUND));
+                .orElseThrow(() -> new ScHttpException(HttpStatus.NOT_FOUND, MSG_USER_NOT_FOUND));
 
         try {
             UsernamePasswordAuthenticationToken passwordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginDto.getEmail(),
                     loginDto.getPassword(), user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authenticationManager.authenticate(passwordAuthenticationToken));
         } catch (Exception ex) {
-            throw new ScClientException(HttpStatus.UNAUTHORIZED, MSG_BAD_CREDENTIAL);
+            throw new ScHttpException(HttpStatus.UNAUTHORIZED, MSG_BAD_CREDENTIAL);
         }
 
         return jwtUtil.createToken(user);

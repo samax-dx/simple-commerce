@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ScApiExceptionHandler {
 
-    @ExceptionHandler(ScClientException.class)
-    public ResponseEntity<?> handleClientException(ScClientException exception) {
+    @ExceptionHandler(ScHttpException.class)
+    public ResponseEntity<?> handleClientException(ScHttpException exception) {
         return ResponseEntity
                 .status(exception.getHttpStatus())
                 .body(exception.getMessage());

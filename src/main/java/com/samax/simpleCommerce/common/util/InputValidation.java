@@ -1,5 +1,6 @@
 package com.samax.simpleCommerce.common.util;
 
+
 public class InputValidation {
 
     public static final String RX_NAME = "^[A-Za-z0-9]+(?:\\.[A-Za-z0-9])?[A-Za-z0-9]*$";

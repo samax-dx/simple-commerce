@@ -1,22 +1,24 @@
 package com.samax.simpleCommerce.catalog.controller;
 
 import com.samax.simpleCommerce.catalog.model.Product;
+import com.samax.simpleCommerce.catalog.model.ProductFileDto;
 import com.samax.simpleCommerce.catalog.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/product")
 @RequiredArgsConstructor
 public class ProductController {
+
     private final ProductService productService;
 
 
@@ -31,7 +33,7 @@ public class ProductController {
     }
 
     @PostMapping("/saveProduct")
-    public Product saveProduct(@RequestBody Product product) {
+    public Product saveProduct(ProductFileDto product) {
         return productService.saveProduct(product);
     }
 

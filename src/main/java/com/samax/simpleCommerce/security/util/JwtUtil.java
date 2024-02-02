@@ -1,6 +1,5 @@
 package com.samax.simpleCommerce.security.util;
 
-
 import com.samax.simpleCommerce.security.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -9,7 +8,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 
 import java.util.Date;
 import java.util.List;
@@ -42,6 +40,18 @@ public class JwtUtil {
                 .compact();
     }
 
+    public String resolveToken(HttpServletRequest request) {
+        String tokenHeader = "Authorization";
+        String bearerToken = request.getHeader(tokenHeader);
+
+        if (bearerToken == null) return null;
+
+        String tokenPrefix = "Bearer ";
+        if (!bearerToken.startsWith(tokenPrefix)) return null;
+
+        return bearerToken.substring(tokenPrefix.length());
+    }
+
     public Claims resolveClaims(HttpServletRequest req) {
         try {
             String token = resolveToken(req);
@@ -60,27 +70,11 @@ public class JwtUtil {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
-    public String resolveToken(HttpServletRequest request) {
-        String tokenHeader = "Authorization";
-        String bearerToken = request.getHeader(tokenHeader);
-
-        if (bearerToken == null) return null;
-
-        String tokenPrefix = "Bearer ";
-        if (!bearerToken.startsWith(tokenPrefix)) return null;
-
-        return bearerToken.substring(tokenPrefix.length());
-    }
-
-    public boolean validateClaims(Claims claims) {
-        return claims.getExpiration().after(new Date());
-    }
-
-    public String getEmail(Claims claims) {
+    public String getSubject(Claims claims) {
         return claims.getSubject();
     }
 
-    private List<String> getRoles(Claims claims) {
+    public List<String> getRoles(Claims claims) {
         return List.of(((String) claims.get("roles")).split(","));
     }
 
