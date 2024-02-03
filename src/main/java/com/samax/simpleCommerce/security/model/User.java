@@ -44,6 +44,7 @@ public class User implements UserDetails {
     @Convert(converter = RoleSetConverter.class)
     Set<RoleName> roles;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
