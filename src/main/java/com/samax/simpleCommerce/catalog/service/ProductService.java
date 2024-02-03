@@ -2,6 +2,8 @@ package com.samax.simpleCommerce.catalog.service;
 
 import com.samax.simpleCommerce.catalog.model.Product;
 import com.samax.simpleCommerce.catalog.model.ProductFileDto;
+import com.samax.simpleCommerce.catalog.model.ProductPrice;
+import com.samax.simpleCommerce.catalog.repository.ProductPriceRepository;
 import com.samax.simpleCommerce.catalog.repository.ProductRepository;
 import com.samax.simpleCommerce.common.excption.ScHttpException;
 import com.samax.simpleCommerce.common.service.FileStorageService;
@@ -18,12 +20,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
 
-    private static final String MSG_PRODUCT_EXISTS = "email has already been registered";
     private static final String MSG_PRODUCT_NOT_FOUND = "product not found";
     private static final String MSG_SAVE_FAILURE = "image save failure";
     private static final String MSG_BAD_FILENAME = "invalid filename";
+    private static final String PRD_DEFAULT_PRICE_NAME = "Base Price";
 
     private final ProductRepository productRepository;
+    private final ProductPriceRepository productPriceRepository;
     private final FileStorageService fileStorageService;
 
     @Value("${app.download-baseurl}")
@@ -52,11 +55,24 @@ public class ProductService {
         product.setName(productDto.getName());
         product.setDescription(productDto.getDescription());
         product.setImageUrl(downloadBaseUrl + "/" + imageFileName);
-        return productRepository.save(product);
+        productRepository.save(product);
+
+        ProductPrice productPrice = new ProductPrice();
+        productPrice.setValue(productDto.getPrice());
+        productPrice.setCurrencyCode(productDto.getPriceCurrencyCode());
+        productPrice.setName(PRD_DEFAULT_PRICE_NAME);
+        productPrice.setProductId(product.getProductId());
+        productPriceRepository.save(productPrice);
+
+        return product;
     }
 
     public void deleteProduct(Integer id) {
         productRepository.deleteById(id);
+    }
+
+    public ProductPrice saveProductPrice(ProductPrice productPrice) {
+        return productPriceRepository.save(productPrice);
     }
 
 }

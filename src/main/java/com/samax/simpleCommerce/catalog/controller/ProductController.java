@@ -2,11 +2,13 @@ package com.samax.simpleCommerce.catalog.controller;
 
 import com.samax.simpleCommerce.catalog.model.Product;
 import com.samax.simpleCommerce.catalog.model.ProductFileDto;
+import com.samax.simpleCommerce.catalog.model.ProductPrice;
 import com.samax.simpleCommerce.catalog.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,8 +40,14 @@ public class ProductController {
     }
 
     @PostMapping("/deleteProduct")
-    public void deleteProduct(@PathVariable Integer id) {
+    public int deleteProduct(@RequestParam("productId") int id) {
         productService.deleteProduct(id);
+        return id;
+    }
+
+    @PostMapping("/saveProductPrice")
+    public ProductPrice saveProductPrice(@RequestBody ProductPrice productPrice) {
+        return productService.saveProductPrice(productPrice);
     }
 
 }
