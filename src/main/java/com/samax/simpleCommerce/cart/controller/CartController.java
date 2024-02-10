@@ -24,7 +24,7 @@ public class CartController {
         return cartService.getVisitorCart(visitorId);
     }
 
-    @GetMapping("getVisitorCart")
+    @GetMapping("getUserCart")
     public CartView getUserCart(@RequestParam("visitorCartId") String visitorCartId) {
         return cartService.getUserCart(-1, visitorCartId);
     }
